@@ -15,7 +15,7 @@ def get_embedding(input, model='text-embedding-3-small'):
     )
     return [x.embedding for x in response.data]
 
-# This is the "Updated" helper function for calling LLM
+#This is the "Updated" helper function for calling LLM
 def get_completion(prompt, model="gpt-4o-mini", temperature=0, top_p=1.0, max_tokens=1024, n=1, json_output=False):
     if json_output == True:
       output_json_structure = {"type": "json_object"}
