@@ -1,7 +1,3 @@
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 import streamlit as st
 from retirement_savings_app import calculate_retirement_savings, get_ai_suggestion
 from helper_functions.utility import check_password
