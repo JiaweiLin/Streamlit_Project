@@ -20,11 +20,11 @@ def get_ai_suggestion(projected_savings, total_needed, shortfall, additional_mon
     Based on the following retirement savings information, provide a brief suggestion on whether the user has enough savings for retirement:
     
     - Projected Savings at Retirement: ${projected_savings:,.2f}
-    - Total Needed for Retirement: ${total_needed:,.2f}
+    - Total Savings Needed for Retirement: ${total_needed:,.2f}
     - Shortfall: ${shortfall:,.2f}
-    - Suggested Additional Monthly Contribution: ${additional_monthly:,.2f}
+    - Suggested Additional Monthly Contribution (CPF): ${additional_monthly:,.2f}
     
-    Please provide a concise response (2-3 sentences) that includes whether they're on track, and if not, what they should consider doing.
+    Please provide a concise response (4-5 sentences) that includes whether they are on track, and if not, what they should consider doing, for example suggest which CPF Life Plan to use from https://www.cpf.gov.sg/service/article/what-are-the-cpf-life-plans-available-and-which-is-the-right-plan-for-me
     """
     
     messages=[
