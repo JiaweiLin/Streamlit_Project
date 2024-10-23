@@ -16,12 +16,14 @@ with col1:
     current_savings = st.number_input("Current Savings ($)", min_value=0, value=10000)
     expected_expenses = st.number_input("Expected Annual Expenses After Retirement ($)", min_value=0, value=40000)
     cpf_savings = st.number_input("Current CPF Savings ($)", min_value=0, value=10000)
+    monthly_income = st.number_input("Monthly Income Before Retirement ($)", min_value=0, value=4000)
     
 with col2:
     retirement_age = st.number_input("Retirement Age", min_value=current_age + 1, max_value=100, value=65)
     monthly_savings = st.number_input("Monthly Savings After Expenses ($)", min_value=0, value=500)
     life_expectancy = st.number_input("Life Expectancy", min_value=retirement_age + 1, max_value=120, value=85)
-    monthly_payout = st.number_input("Monthly Payout After Retirement ($)", min_value=0, value=500)
+    monthly_payout = st.number_input("Monthly CPF Payout After 65 ($)", min_value=0, value=500)
+    expected_cpf_rate = st.slider("Expected CPF contribution rate (%)", min_value=0.10, max_value=37.00, value=37.00, step=0.50)
 
 expected_return = st.slider("Expected Annual Return on Savings (%)", min_value=0.10, max_value=10.00, value=3.00, step=0.10)
 

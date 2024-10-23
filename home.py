@@ -1,7 +1,6 @@
 import streamlit as st
-from helper_functions.utility import check_password
 
-st.title("Home")
+st.title("🏠 Home")
 st.write("Welcome to the Home page! This app offers two services - CPF Policy Enquiry and Retirement Planning Simulator.")
 st.write("For the CPF Policy Enquiry, users can enter queries related to CPF policies and schemes, the app should return an answer.")
 st.write("For the retirement planning simulator, users can tweak various parameters to see if their retirement plan is sustainable.")

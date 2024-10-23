@@ -6,12 +6,12 @@ import streamlit as st
 from openai import OpenAI
 from helper_functions import llm
 
-def calculate_retirement_savings(current_age, retirement_age, current_savings, monthly_contribution, expected_return):
+def calculate_retirement_savings(current_age, retirement_age, current_savings, monthly_savings, expected_return):
     years_until_retirement = retirement_age - current_age
     future_value = current_savings * (1 + expected_return) ** years_until_retirement
     
     for i in range(years_until_retirement):
-        future_value += monthly_contribution * 12 * (1 + expected_return) ** (years_until_retirement - i)
+        future_value += monthly_savings * 12 * (1 + expected_return) ** (years_until_retirement - i)
     
     return future_value
 
