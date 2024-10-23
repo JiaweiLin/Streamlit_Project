@@ -1,30 +1,26 @@
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 from crewai import Agent, Task, Crew
 from crewai_tools import WebsiteSearchTool
 
 # Custom WebsiteSearchTool
 def search_cpf_info(query):
     url = "https://www.cpf.gov.sg/member/infohub/cpf-clarifies/policy-faqs"
-    url2 = "https://www.cpf.gov.sg/service/faq"
+    url2 = "https://www.cpf.gov.sg/member/cpf-overview"
     tool_websearch = WebsiteSearchTool(url)
     tool_websearch_2 = WebsiteSearchTool(url2)
 
     # Create an agent that uses the WebsiteSearchTool
     researcher = Agent(
         role='researcher',
-        goal='Use the tool to search for information on the given Policy FAQs section of the Central Provident Fund website, in order to answer the query',
-        backstory='You are a researcher specialized in finding information from the given Policy FAQs section of the Central Provident Fund website. Make sure to provide full complete answers and make no assumptions.',
+        goal='Use the tool to search for information from specific URL in order to answer the query',
+        backstory='You are a researcher specialized in finding information from the specific URL, which is a Policy FAQ page on the Central Provident Fund website. Make sure to provide full complete answers and make no assumptions.',
         tools=[tool_websearch],
         verbose=True
     )
 
     support_researcher = Agent(
         role='support researcher',
-        goal='Provide fact checking on information retrieved by the researcher from the Policy FAQs section of the Central Provident Fund website, if no answer can be found by the researcher in response to the query, only then use the tool provided to search for information on the given FAQs section of the Central Provident Fund website, in order to answer the query',
-        backstory='You are a support researcher specialized in fact checking on information retrieved by the researcher from the Policy FAQs section of the Central Provident Fund website. You need to ensure that the researcher is providing the best information possible. You need to make sure that the researcher is providing full complete answers and make no assumptions. Only use the tool if no answer can be found by the researcher. If no answer can be found and the query is not related to Central Provident Fund, simply reply that the CPF Policy FAQs do not have the information.',
+        goal='Provide fact checking on information retrieved by the researcher from the specific URL, if no answer can be found by the researcher in response to the query, only then use the tool provided to search for information on the given specific URL, in order to answer the query',
+        backstory='You are a support researcher specialized in fact checking on information retrieved by the researcher from the specific URL. You need to ensure that the researcher is providing the best information possible. You need to make sure that the researcher is providing full complete answers and make no assumptions. Only use the tool if no answer can be found by the researcher. If no answer can be found and the query is not related to Central Provident Fund, simply reply that the CPF Policy FAQs do not have the information.',
         tools=[tool_websearch_2],
         verbose=True
     )
