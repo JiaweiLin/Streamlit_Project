@@ -15,20 +15,36 @@ def calculate_retirement_savings(current_age, retirement_age, current_savings, m
     
     return future_value
 
-def get_ai_suggestion(projected_savings, total_needed, shortfall, additional_monthly):
+def calculate_cpf_savings(current_age, retirement_age, cpf_savings, monthly_income, expected_cpf_rate):
+    years_until_retirement = retirement_age - current_age
+    current_savings = cpf_savings
+
+    for year in range(1, years_until_retirement + 1):
+        # Calculate monthly CPF contributions for the year
+        annual_contribution = monthly_income * expected_cpf_rate * 12
+        
+        # Add annual contribution to savings
+        current_savings += annual_contribution
+        
+        # Calculate and add interest at year end
+        interest_earned = current_savings * 0.04
+        current_savings += interest_earned
+
+    return current_savings
+
+def get_ai_suggestion(projected_assets, total_needed, shortfall):
     prompt = f"""
-    Based on the following retirement savings information, provide a brief suggestion on whether the user has enough savings for retirement:
+    Based on the following retirement savings information, provide a brief suggestion on whether the user has enough savings for retirement in Singapore:
     
-    - Projected Savings at Retirement: ${projected_savings:,.2f}
-    - Total Savings Needed for Retirement: ${total_needed:,.2f}
+    - Projected total assets (Personal savings + CPF savings) for retirement: ${projected_assets:,.2f}
+    - Total savings needed for retirement: ${total_needed:,.2f}
     - Shortfall: ${shortfall:,.2f}
-    - Suggested Additional Monthly Contribution (CPF): ${additional_monthly:,.2f}
     
     Please provide a concise response (4-5 sentences) that includes whether they are on track, and if not, what they should consider doing, for example suggest which CPF Life Plan to use from https://www.cpf.gov.sg/service/article/what-are-the-cpf-life-plans-available-and-which-is-the-right-plan-for-me
     """
     
     messages=[
-        {"role": "system", "content": "You are a helpful customer service officer from Central Provident Fund Board Singapore specializing in retirement planning."},
+        {"role": "system", "content": "You are a helpful customer service officer from Central Provident Fund Board Singapore who specializes in providing advice on retirement planning in Singapore."},
          {"role": "user", "content": prompt}
     ]
 

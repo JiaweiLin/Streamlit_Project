@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("💡 About this App")
+st.title("💡 About Us")
 
 st.write("This is a Streamlit App that demonstrates how to use the OpenAI API to generate text completions.")
 
