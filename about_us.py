@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Title Section
-st.title("About Us")
+st.title("👨‍💻	About Us")
 
 # Project Scope Section
 st.header("Project Scope")
