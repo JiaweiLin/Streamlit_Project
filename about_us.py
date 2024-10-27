@@ -43,6 +43,6 @@ st.markdown("""
 # Developer Section
 st.header("Developer")
 st.markdown("""
-This application was developed by **Jiawei Lin** as part of 
+This application was developed by **Jiawei Lin (CPFB)** as part of 
 **GovTech's AI Champions Bootcamp 2024 - Pilot Run 2nd Cohort**
 """)
